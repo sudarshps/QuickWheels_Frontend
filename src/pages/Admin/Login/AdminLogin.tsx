@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from '../../../api/axios';
 import React, { useState } from 'react';
 import {useNavigate} from 'react-router-dom'
 import { setAdminToken } from '../../../slices/adminAuthSlice';
@@ -28,7 +28,7 @@ const AdminLogin: React.FC = () => {
     }
 
     try {
-      await axios.post('http://localhost:3000/admin/adminlogin',{email,password})
+      await axios.post('/adminlogin',{email,password})
       .then(res=>{
         if(res.data){
           if(res.data.validated){
