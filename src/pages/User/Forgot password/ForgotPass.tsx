@@ -8,6 +8,7 @@ import { toast,ToastContainer } from "react-toastify";
 import Modal from "../../../components/User/Login Modal/loginModal";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import Footer from "../../../components/User/Footer/Footer";
 
 interface ForgotPassFCProps {
   verify:(isValid:boolean)=>void
@@ -138,6 +139,7 @@ const ForgotPass: React.FC<ForgotPassFCProps> = ({verify}) => {
       </Card>
     </div>
   </div>
+  <Footer/>
 </>
 
   );

@@ -38,9 +38,6 @@ const socket = io(import.meta.env.VITE_BACKEND_URL,{
   transports: ['polling', 'websocket'],
 })
 
-console.log('okkk',import.meta.env.VITE_BACKEND_URL);
-
-
 function App() {
 
   const [otpVerified,setOtpVerfied]= useState(false)

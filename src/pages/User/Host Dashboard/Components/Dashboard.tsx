@@ -188,21 +188,29 @@ const Dashboard:React.FC = () => {
   
   return (
     <div className="min-h-screen p-8">
-      <div className="max-w-7xl mx-auto space-y-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <MetricCard id='1' title="ORDER RECEIVED" value={`${orderDetails?.length}`} subtext="" />
-          {/* <MetricCard id='2' title="TOTAL CHARGES" value="2390" subtext="" /> */}
-          <MetricCard id='3' title="TOTAL EARNINGS" value={`₹${totalEarnings()}`} subtext="" />
-        </div>
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 ms-20">
-          <div className="lg:col-span-2">
-            <SalesChart />
-          </div>
-          <OrderStatusChart active={statusCounts.active} completed={statusCounts.completed} upcoming={statusCounts.upcoming}/>
-        </div>
-        <OrderTable orderDetails={orderDetails}/>
+    <div className="max-w-7xl mx-auto space-y-8">
+      {/* Metrics Section */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <MetricCard id="1" title="ORDER RECEIVED" value={`${orderDetails?.length}`} subtext="" />
+        {/* <MetricCard id='2' title="TOTAL CHARGES" value="2390" subtext="" /> */}
+        <MetricCard id="3" title="TOTAL EARNINGS" value={`₹${totalEarnings()}`} subtext="" />
       </div>
+  
+      {/* Sales Charts Section */}
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 lg:ms-20">
+        <div className="lg:col-span-2">
+          <SalesChart />
+        </div>
+        <div className="lg:col-span-2">
+          <OrderStatusChart active={statusCounts.active} completed={statusCounts.completed} upcoming={statusCounts.upcoming} />
+        </div>
+      </div>
+  
+      {/* Order Table Section */}
+      <OrderTable orderDetails={orderDetails} />
     </div>
+  </div>
+  
   )
 }
 

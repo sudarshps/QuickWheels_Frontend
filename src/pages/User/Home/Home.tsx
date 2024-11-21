@@ -125,7 +125,7 @@ and also find vehicles nearby
   return (
     <>
       <Navbar />
-      <div className="home-page relative">
+      <div className={`home-page relative`}>
         <div className="content-1 flex-none absolute top-28 mt-8 left-20">
           <h1 className="text-3xl font-bold">
             Enjoy Your Ride With
@@ -230,21 +230,21 @@ and also find vehicles nearby
       </div>
 
       <div className="home-page-s2 mt-10 relative">
-        <div className="content-1 flex-none absolute top-20 mt-8 left-1/2 ml-44">
-          <h1 className="text-xl text-red-500 font-bold">About Us</h1>
-          <p className="text-sm text-gray-500 pt-6 w-96">
-            we are redefining the way people think about car rental. Our
-            platform connects car owners with individuals in need of a ride,
-            creating a community where mobility is shared, convenient, and
-            sustainable. We empower car owners to turn their vehicles into
-            income-generating assets while offering renters a diverse selection
-            of cars to suit their needs and budgets. Our commitment to safety,
-            transparency, and ease of use makes us a trusted choice in the
-            car-sharing market. Join us in driving a future where every journey
-            is a shared adventure.
-          </p>
-        </div>
-      </div>
+  <div className="content-1 absolute top-28 left-1/2 ml-[4rem] px-4 sm:px-8 md:px-12 lg:px-20 text-center md:text-left max-w-xl">
+    <h1 className="text-xl md:text-2xl text-red-500 font-bold">About Us</h1>
+    <p className="text-sm md:text-base text-gray-500 pt-4">
+      We are redefining the way people think about car rental. Our platform
+      connects car owners with individuals in need of a ride, creating a
+      community where mobility is shared, convenient, and sustainable. We
+      empower car owners to turn their vehicles into income-generating assets
+      while offering renters a diverse selection of cars to suit their needs
+      and budgets. Our commitment to safety, transparency, and ease of use
+      makes us a trusted choice in the car-sharing market. Join us in driving
+      a future where every journey is a shared adventure.
+    </p>
+  </div>
+</div>
+
 
       <div className="flex items-center justify-center">
         <div className="text-center">

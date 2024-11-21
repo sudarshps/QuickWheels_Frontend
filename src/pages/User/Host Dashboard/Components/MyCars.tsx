@@ -94,10 +94,11 @@ const MyCars:React.FC = () => {
   }
 
   return (
-    <div className="w-3/4 p-6">
-        <ToastContainer />
+    <div className="w-full lg:w-3/4 p-6">
+    <ToastContainer />
     <h2 className="text-2xl font-bold text-gray-800 mb-5">My Cars</h2>
-    {cars.length ?
+  
+    {cars.length ? (
       cars.map((car) => (
         <div className="relative p-6 bg-white shadow rounded mb-5">
           <span className="absolute top-2 right-2 text-gray-700 px-2 py-1 rounded">
@@ -123,73 +124,76 @@ const MyCars:React.FC = () => {
               />
             )}
           </span>
-
-          <div className="flex">
+  
+          <div className="flex flex-col lg:flex-row">
             <img
               src={`${car.images[0]}`}
               alt="Car"
-              className="w-40 h-24 object-cover rounded"
+              className="w-full lg:w-40 h-24 object-cover rounded mb-4 lg:mb-0 lg:mr-4"
             />
-            <div className="ml-4">
-              <h3 className="text-xl font-bold">
-                {car.registerNumber}
-              </h3>
+            <div>
+              <h3 className="text-xl font-bold">{car.registerNumber}</h3>
               <p className="text-lg font-semibold">{car.carModel}</p>
               <p>
-                Insurance:{" "}
-                <span className="text-green-600">
-                  {car.insuranceExp}
-                </span>
+                Insurance: <span className="text-green-600">{car.insuranceExp}</span>
               </p>
-              <p className="flex items-center  ">
+              <p className="flex items-center">
                 Availability:{" "}
                 <span className="ms-2">
                   {car.availabilityFrom?.toString().slice(0, 10)} -{" "}
                   {car.availabilityTo?.toString().slice(0, 10)}
                 </span>
               </p>
-              <p className="mt-4 flex">
+  
+              <div className="mt-4 flex flex-col sm:flex-row">
                 <span>
                   <DatePickerWithRange onDateChange={handleDate} />
                 </span>
-                <button
-                  className="bg-yellow-500 text-white px-4 py-2 ms-2 text-sm rounded mr-2"
-                  onClick={() => handleAvailabilitySet("list",car._id)}
-                >
-                  List
-                </button>
-
-                {car.availabilityFrom ? (
+                <div className="mt-2 sm:mt-0 sm:ml-2 flex">
                   <button
-                    className="bg-yellow-500 text-white px-4 py-2 ms-2 text-sm rounded mr-2"
-                    onClick={() => handleAvailabilitySet("unlist",car._id)}
+                    className="bg-yellow-500 text-white px-4 py-2 text-sm rounded mr-2"
+                    onClick={() => handleAvailabilitySet("list", car._id)}
                   >
-                    Unlist
+                    List
                   </button>
-                ) : (
-                  ""
-                )}
-              </p>
+  
+                  {car.availabilityFrom && (
+                    <button
+                      className="bg-yellow-500 text-white px-4 py-2 text-sm rounded mr-2"
+                      onClick={() => handleAvailabilitySet("unlist", car._id)}
+                    >
+                      Unlist
+                    </button>
+                  )}
+                </div>
+              </div>
             </div>
           </div>
-          <div className="flex grid grid-cols-2 mt-4">
-                <div>
-                <button
-              className="bg-yellow-500 text-white px-4 py-2 rounded"
-              onClick={() => navigate(`/editcardetails?id=${car._id}`)}
-            >
-              View Details
-            </button>
-                </div>
-           <div className="flex justify-end w-full">
-            <button className="bg-red-500 text-white px-4 py-2 rounded" onClick={()=>handleRemove(car._id)}>
-            <FontAwesomeIcon icon={faTrash} /> Remove
-            </button>
-           </div>
+  
+          <div className="mt-4 flex flex-col sm:flex-row justify-between">
+            <div>
+              <button
+                className="bg-yellow-500 text-white px-4 py-2 rounded"
+                onClick={() => navigate(`/editcardetails?id=${car._id}`)}
+              >
+                View Details
+              </button>
+            </div>
+            <div className="flex justify-end mt-2 sm:mt-0">
+              <button
+                className="bg-red-500 text-white px-4 py-2 rounded"
+                onClick={() => handleRemove(car._id)}
+              >
+                <FontAwesomeIcon icon={faTrash} /> Remove
+              </button>
+            </div>
           </div>
         </div>
-      )):<h1>No cars available</h1>}
-  </div>
+      ))
+    ) : (
+      <h1>No cars available</h1>
+    )}
+  </div>  
   )
 }
 
