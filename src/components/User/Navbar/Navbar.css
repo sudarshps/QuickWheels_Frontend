@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.Logo-Quick{
+    background-color: rgba(241, 27, 27, 0.562);
+}
+
