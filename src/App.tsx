@@ -33,7 +33,7 @@ import ForgotPass from './pages/User/Forgot password/ForgotPass.tsx'
 import SetPassword from './pages/User/Set New password/SetPassword.tsx'
 import { useState } from 'react'
 
-const socket = io('https://apollofurniture.online',{
+const socket = io(import.meta.env.VITE_BACKEND_URL,{
   withCredentials:true,
   transports: ['polling', 'websocket'],
 })

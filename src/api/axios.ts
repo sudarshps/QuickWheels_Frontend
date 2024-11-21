@@ -2,7 +2,7 @@ import axios, { AxiosRequestHeaders } from "axios";
 import store from "../redux/store";
 
 const api = axios.create({
-    baseURL:'https://apollofurniture.online/admin'
+    baseURL:`${import.meta.env.VITE_BACKEND_URL}/admin`
 })
 
 api.interceptors.request.use(
