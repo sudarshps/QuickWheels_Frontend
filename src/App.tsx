@@ -33,7 +33,7 @@ import ForgotPass from './pages/User/Forgot password/ForgotPass.tsx'
 import SetPassword from './pages/User/Set New password/SetPassword.tsx'
 import { useState } from 'react'
 
-const socket = io('http://localhost:3000',{
+const socket = io('https://apollofurniture.online',{
   withCredentials:true
 })
 
