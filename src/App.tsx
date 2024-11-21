@@ -38,7 +38,7 @@ const socket = io(import.meta.env.VITE_BACKEND_URL,{
   transports: ['polling', 'websocket'],
 })
 
-console.log(import.meta.env.VITE_BACKEND_URL);
+console.log('okkk',import.meta.env.VITE_BACKEND_URL);
 
 
 function App() {
