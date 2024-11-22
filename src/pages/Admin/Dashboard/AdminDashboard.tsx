@@ -59,17 +59,18 @@ const Dashboard: React.FC = () => {
 },[])
   return (
     <>
-      <div className="min-h-screen bg-[#0A0C2D] px-12">
-        <Navbar />
-        <div className="p-6 mt-10 bg-gradient-to-br from-[#10114f] to-[#1416b5] rounded-xl max-w-6xl mx-auto">
-        <Stats totalOrders={totalRevenue/149} totalRevenue={totalRevenue}/>
-          <div className="grid grid-cols-2 gap-6 mb-8">
-            <OrderGraph status={statusCounts}/>
-           <LeaderBoard/>
-          </div>
-          <OrderTable/>
-        </div>
-      </div>
+      <div className="min-h-screen bg-[#0A0C2D] px-4 sm:px-6 md:px-8 lg:px-12">
+  <Navbar />
+  <div className="p-4 sm:p-6 mt-6 sm:mt-10 bg-gradient-to-br from-[#10114f] to-[#1416b5] rounded-xl max-w-4xl sm:max-w-5xl lg:max-w-6xl mx-auto">
+    <Stats totalOrders={totalRevenue / 149} totalRevenue={totalRevenue} />
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mb-6 sm:mb-8">
+      <OrderGraph status={statusCounts} />
+      <LeaderBoard />
+    </div>
+    <OrderTable />
+  </div>
+</div>
+
     </>
   );
 };
