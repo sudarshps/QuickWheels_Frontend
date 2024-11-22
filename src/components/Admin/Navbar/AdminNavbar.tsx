@@ -10,9 +10,7 @@ const Navbar: React.FC = () => {
 
   return (
     <nav className="bg-transparent p-4">
-      {/* Main navbar container */}
       <div className="flex justify-between items-center">
-        {/* Logo section */}
         <div className="flex items-center mt-5">
           <span className="Logo-Quick py-1 px-1 self-center text-xl font-bold whitespace-nowrap text-white rounded-md italic">
             Quick
@@ -22,7 +20,6 @@ const Navbar: React.FC = () => {
           </span>
         </div>
 
-        {/* Mobile menu button */}
         <button
           className="lg:hidden text-white hover:text-gray-400"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -31,7 +28,6 @@ const Navbar: React.FC = () => {
           {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
 
-        {/* Desktop navigation */}
         <div className="hidden lg:flex space-x-6 text-white font-medium">
           <Link to={'/admin/dashboard'} className="hover:text-gray-400">
             Dashboard
@@ -60,7 +56,6 @@ const Navbar: React.FC = () => {
         </div>
       </div>
 
-      {/* Mobile navigation */}
       <div 
         className={`${
           isMenuOpen ? 'flex' : 'hidden'

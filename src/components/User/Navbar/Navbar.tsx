@@ -141,7 +141,7 @@ const Navbar: React.FC<NavbarProps> = ({className}) => {
     <nav className={`${className} p-4 fixed w-full z-50 transition-colors duration-300 ${isScrolled?'bg-white shadow-md':'bg-transparent'}`}>
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-12 p-4">
         <Link
-          to="http://localhost:5173/"
+          to={import.meta.env.VITE_FRONTEND_URL}
           className="flex items-center rtl:space-x-reverse"
         >
           <span className="Logo-Quick py-1 px-1 self-center text-xl font-bold whitespace-nowrap dark:text-white rounded-md italic">

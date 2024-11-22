@@ -44,7 +44,6 @@ const OrderGraph:React.FC<OrderGraphFCProps> = ({status}) => {
 
   return (
     <div className="bg-gradient-to-br from-[#1c1d73] to-[#2a32c8] text-white p-6 rounded-xl">
-    {/* Header Section */}
     <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
       <h3 className="font-semibold text-lg md:text-base mb-2 md:mb-0">Orders Overview</h3>
       <button className="flex items-center gap-2 text-sm">
@@ -53,7 +52,6 @@ const OrderGraph:React.FC<OrderGraphFCProps> = ({status}) => {
       </button>
     </div>
   
-    {/* Chart Section */}
     <div className="h-64 w-full">
       <ResponsiveContainer width="100%" height="100%">
         <BarChart
@@ -73,7 +71,6 @@ const OrderGraph:React.FC<OrderGraphFCProps> = ({status}) => {
       </ResponsiveContainer>
     </div>
   
-    {/* Status Section */}
     <div className="flex flex-wrap justify-center gap-4 mt-4">
       {Object.entries(status).map(([key, value]) => (
         <div key={key} className="flex items-center gap-2">
