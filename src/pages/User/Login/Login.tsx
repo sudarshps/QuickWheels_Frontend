@@ -129,6 +129,7 @@ const Login: React.FC = () => {
 
     interface userResponse {
       userCreated: boolean;
+      validUser:boolean;
       userId: string;
       token: string;
       message: string;
@@ -145,13 +146,9 @@ const Login: React.FC = () => {
         const userRegistration = await axiosInstance.post<userResponse>(
           "/userRegister",
           { userName, password, email, loginMethod }
-        );
-
-        if (userRegistration.data.userCreated) {
-          const token = userRegistration.data.token;
+        );        
+        if (userRegistration.data.validUser) {
           setOpenModal(false);
-          // navigate(`/?username=${userName}`)
-          localStorage.setItem("token", token);
           navigate("/");
         }
       } else {
@@ -279,7 +276,6 @@ const Login: React.FC = () => {
       >
         {" "}
         <div className="flex-grow flex items-center justify-center px-4 py-8">
-          {" "}
           <div className="login-card flex flex-col md:flex-row items-center justify-center w-full md:w-3/4 bg-white rounded-lg overflow-hidden shadow-lg">
             <div
               className={`

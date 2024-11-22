@@ -26,20 +26,17 @@ const HostDashboard: React.FC = () => {
      <div className="flex flex-col userprofile items-center py-8 bg-gray-50 min-h-screen">
     <div className="bg-white shadow-lg rounded-lg w-full max-w-6xl p-8 mt-20">
       <div className="flex flex-col lg:flex-row">
-        {/* Sidebar for Mobile View */}
         <div className={`${isSidebarOpen ? 'block' : 'hidden'} lg:w-1/5 w-full lg:block`}>
           <Sidebar onSelect={handleSelection} />
         </div>
 
-        {/* Hamburger Toggle Button for Mobile View */}
         <button
           className="lg:hidden p-2 text-gray-500"
           onClick={() => setSidebarOpen(!isSidebarOpen)}
         >
-          &#9776; {/* Hamburger Icon */}
+          &#9776; 
         </button>
 
-        {/* Main Content */}
         <div className="lg:w-4/5 w-full">
           {componentType === "dashboard" ? (
             <Dashboard />

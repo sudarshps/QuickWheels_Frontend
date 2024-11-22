@@ -127,13 +127,13 @@ and also find vehicles nearby
       <Navbar />
       <div className="home-page relative min-h-screen w-full">
         {/* Hero Section */}
-        <div className="content-1 px-4 md:px-0 md:absolute md:top-28 md:mt-8 md:left-20 pt-40 md:pt-0">
+        <div className="content-1 px-4 md:px-0 md:absolute md:top-28 md:mt-8 md:left-20 pt-20 md:pt-0">
           <h1 className="text-2xl md:text-3xl font-bold">
             Enjoy Your Ride With
             <br />
             Our Best Service
           </h1>
-          <p className="text-sm text-gray-500 pt-6 max-w-md">
+          <p className="text-sm text-gray-500 pt-6 max-w-xl">
             We provide you the best service. Discover a seamless car rental
             experience that puts you in the driver's seat. Whether you're
             planning a quick city getaway or an epic road trip, we have the
@@ -143,14 +143,13 @@ and also find vehicles nearby
         </div>
 
         {/* Search Section */}
-        <div className="w-full sm:w-3/4 md:w-1/2 px-4 md:px-0 md:absolute md:left-1/2 md:ml-[-30rem] md:top-[450px]">
-          <div className="bg-white flex flex-col sm:flex-col md:flex-row shadow-lg rounded-lg mt-3 items-center justify-between p-4 w-full md:min-w-[60rem]">
-            {/* Location Section */}
-            <div className="w-full sm:w-auto mb-4 sm:mb-2 md:mb-0">
+        <div className="w-full px-4 md:px-0 md:absolute md:left-1/2 md:ml-[-24rem] md:top-[450px]">
+          <div className="bg-white flex flex-col md:flex-row shadow-lg rounded-lg mt-3 items-center justify-between p-4 w-full md:min-w-[48rem]">
+            <div className="w-full md:w-auto mb-4 md:mb-0">
               <div className="flex items-center">
                 <FontAwesomeIcon
                   icon={faLocationArrow}
-                  className="text-red-500 mr-2"
+                  className="text-red-500"
                 />
                 <section className="w-full">
                   <NavigationMenu
@@ -165,15 +164,13 @@ and also find vehicles nearby
               </div>
             </div>
 
-            {/* Date Picker Section */}
-            <div className="w-full sm:w-auto md:px-4 mb-4 sm:mb-2 md:mb-0">
+            <div className="w-full md:w-auto md:px-4 mb-4 md:mb-0">
               <DatePickerWithRange onDateChange={handleDateChange} />
             </div>
 
-            {/* Book Button */}
-            <div className="w-full sm:w-auto md:px-4">
+            <div className="w-full md:w-auto md:px-4">
               <button
-                className="w-full sm:w-auto bg-red-500 text-white text-sm px-6 py-2 rounded-lg hover:bg-red-600"
+                className="w-full md:w-auto bg-red-500 text-white text-sm px-6 py-2 rounded-lg hover:bg-red-600"
                 onClick={handleBookButton}
               >
                 Book Your Ride
@@ -184,7 +181,7 @@ and also find vehicles nearby
       </div>
 
       {/* How It Works Section */}
-      <div className="md:mt-20 px-4 md:px-6">
+      <div className="mt-20 md:mt-40 px-4 md:px-6">
         <div className="text-center">
           <h1 className="text-red-500 font-semibold">How It Works</h1>
           <h1 className="font-bold text-2xl">Our Working Steps</h1>
@@ -235,8 +232,8 @@ and also find vehicles nearby
       </div>
 
       {/* About Section */}
-      <div className="home-page-s2 relative min-h-screen w-full">
-        <div className="content-1 px-4 md:px-0 md:absolute md:top-28 md:left-1/2 md:ml-[7rem] max-w-md py-20 md:py-0">
+      <div className="home-page-s2 mt-10 relative min-h-screen w-full">
+        <div className="content-1 px-4 md:px-0 md:absolute md:top-28 md:left-1/2 md:ml-[4rem] max-w-xl py-20 md:py-0">
           <h1 className="text-xl md:text-2xl text-red-500 font-bold text-center md:text-left">
             About Us
           </h1>
@@ -255,7 +252,7 @@ and also find vehicles nearby
       </div>
 
       {/* Feedback Section */}
-      <div className="px-4 md:px-20 ">
+      <div className="px-4 md:px-20 py-10">
         <div className="text-center">
           <h1 className="text-red-500 font-semibold">Feedback</h1>
           <h1 className="font-bold text-2xl">What Our Customers Says</h1>
