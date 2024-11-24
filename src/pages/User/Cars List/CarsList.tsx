@@ -91,7 +91,7 @@ const CarsList: React.FC = () => {
       <main className="container mx-auto px-4 py-8 mt-24">
       <SearchSection onSearch={handleSearch}/>
 
-        <div className="flex flex-col md:flex-row mx-12 p-4">
+        <div className="flex flex-col md:flex-row mx-auto p-4">
           <FilterSection onSortChange={handleSortChange} search={searchValue}/>
           <CarListSection carListings={carListings}/>
         </div>

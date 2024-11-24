@@ -189,7 +189,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
                   <h2 className="font-semibold">Connections</h2>
                 </div>
                 <div className="overflow-y-auto h-[calc(100%-60px)]">
-                  {chats?.map((user) => (
+                  {chats && chats.length ? (chats?.map((user) => (
                     <div
                       key={user.users[0]._id}
                       onClick={() => handleUserSelection(user)}
@@ -207,7 +207,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({
                       />
                       <span className="truncate">{user?.users[0].name}</span>
                     </div>
-                  ))}
+                  ))):<div className="flex items-center justify-center h-full">No Chats Yet!</div>}
                 </div>
               </div>
             ) : (

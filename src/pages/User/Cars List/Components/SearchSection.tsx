@@ -57,14 +57,14 @@ const SearchSection:React.FC<SearchSectionProps>= ({onSearch}) => {
 
   return (
     <>
-      <div className="w-full bg-red-100">
+      <div className="w-full bg-red-100 rounded-lg">
         <div className="flex flex-col md:flex-row mx-12 p-4 items-center mb-8 space-y-4 md:space-y-0 md:space-x-4">
           <div className="relative flex-grow">
             <FontAwesomeIcon
               className="absolute left-3 top-1/2 transform -translate-y-1/2 text-red-500"
               icon={faLocationArrow}
             />
-            <select className="w-1/2 pl-10 pr-4 py-2 border border-red-300 rounded-md focus:ring-1 focus:ring-red-500 truncate" onChange={(e) => {
+            <select className="w-48 pl-10 pr-4 py-2 border border-red-300 rounded-md focus:ring-1 focus:ring-red-500 truncate" onChange={(e) => {
                   if (e.target.value === "current location") {
                     getUserLocation();
                   }

@@ -101,7 +101,7 @@ const FilterSection: React.FC<FilterSectionProps> = ({ onSortChange,search }) =>
   return (
     <>
 
-      <aside className="w-full md:w-1/4 pr-8">
+      <aside className="w-full md:w-1/4 pr-8 border-b border-double border-gray-300">
         <div className="bg-red-500 text-white font-semibold px-4 py-2 rounded-md mb-4">
           Filters
         </div>

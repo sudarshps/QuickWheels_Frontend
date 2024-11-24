@@ -33,7 +33,7 @@ const CarListSection: React.FC<CarListingsProps> = ({ carListings }) => {
   
   return (
     <>
-      <section className="w-full md:w-3/4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ps-4">
+      <section className="w-full md:w-3/4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ps-4 mt-20 md:mt-0">
         {carListings.length? (
           carListings.map((car, index) => (
             <div

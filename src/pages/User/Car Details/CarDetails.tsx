@@ -85,7 +85,7 @@ const CarDetails: React.FC = () => {
   return (
     <>
       <Navbar className="top-0" />
-      <div className="flex flex-col lg:flex-row gap-8 mt-24 mx-16 p-4">
+      <div className="flex flex-col lg:flex-row gap-8 mt-24 p-4 px-4 md:px-16">
         <ToastContainer />
         <CarDetailsSection
           carImages={carImages}

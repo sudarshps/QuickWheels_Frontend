@@ -408,27 +408,7 @@ const Profile: React.FC = () => {
               </div>
               <h2 className="ml-4 text-2xl font-bold text-gray-800">{name}</h2>
 
-              <div className="ml-auto">
-                {/* <span
-                    className={`text-sm font-semibold ${
-                      status === "Not Verified"
-                        ? `text-red-500`
-                        : status === "Verification Pending"
-                        ? `text-gray-500`
-                        : `text-green-500`
-                    }`}
-                  >
-                    <FontAwesomeIcon
-                      icon={
-                        status === "Not Verified"
-                          ? faCircleXmark
-                          : status === "Verification Pending"
-                          ? faClock
-                          : faCircleCheck
-                      }
-                    />
-                    {status}
-                  </span> */}
+              <div className="md:ml-auto ml-10">
                 <span className="text-sm font-semibold">
                   {status === "Verification Pending" ? (
                     <div className="text-gray-500">
