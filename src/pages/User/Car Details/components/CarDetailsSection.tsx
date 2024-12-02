@@ -88,57 +88,44 @@ const CarDetailsSection: React.FC<CarDetailsFCProps> = ({
             ))}
           </div>
         </div>
-        <div className="grid grid-cols-2 bg-gray-100 rounded-lg p-2">
-          <div>
-            <h1 className="text-3xl font-bold mb-2">
-              {make} <span>{model}</span>
-            </h1>
-            <div className="flex items-center mb-4">
-              <span className="text-gray-600 mr-4">
-                {transmission} · {fuel} · {seat} · {type}
+        <div className="grid grid-cols-1 md:grid-cols-2 bg-gray-100 rounded-lg p-4 gap-4">
+      <div className="space-y-4">
+        <div>
+          <h1 className="text-3xl font-bold">
+            {make} <span>{model}</span>
+          </h1>
+          <div className="text-gray-600 mt-2">
+            {transmission} · {fuel} · {seat} · {type}
+          </div>
+        </div>
+
+        <div className="flex items-center text-gray-700">
+          <FontAwesomeIcon icon={faUser} className="w-5 h-5 mr-3" />
+          <span>Hosted by {hostName}</span>
+        </div>
+
+        <div>
+          <h2 className="font-semibold text-lg mb-2">Car Location</h2>
+          <p className="text-gray-600">{address}</p>
+        </div>
+      </div>
+
+      {rating && rating.length > 0 && (
+        <div className="flex justify-end items-start">
+          <div className="bg-white rounded-lg shadow-md p-4 w-40 text-center">
+            <div className="flex justify-center items-center space-x-2 mb-2">
+              <FontAwesomeIcon icon={faStar} className="text-yellow-500 text-2xl" />
+              <span className="text-yellow-500 font-bold text-3xl">
+                {rating[0].overallRating.toFixed(1)}
               </span>
             </div>
-
-            <div className="flex items-center text-gray-600 mb-6">
-              <FontAwesomeIcon icon={faUser} className="w-5 h-5 mr-2" />
-              <span>Hosted by {hostName}</span>
+            <div className="text-gray-500 text-sm">
+              {`${rating[0].ratingCount} people rated`}
             </div>
-            <div className="mb-4">
-              <h1 className="font-semibold">Car Location</h1>
-              <div className="grid grid-cols-2">
-                <div>
-                  <h6 className="font-normal">{address}</h6>
-                </div>
-                <div>{/* <h6 className='font-normal'>Map</h6> */}</div>
-              </div>
-            </div>
-
-            {/* <div>
-            <h1 className="font-semibold">Features</h1>
-           
-            
-          </div> */}
           </div>
-
-          {rating && rating?.length > 0 && (
-            <div className="flex flex-col items-end">
-              <div className="w-32 h-20 rounded bg-white p-2 shadow-md">
-                <div className="flex items-center gap-2">
-                  <div className="text-yellow-500 font-bold text-3xl">
-                    <FontAwesomeIcon icon={faStar} />
-                  </div>
-                  <div className="text-yellow-500 font-bold text-3xl">
-                    {rating[0].overallRating.toFixed(1)}
-                  </div>
-                  {/* <div className="text-gray-500 text-xs ml-2">(250 reviews)</div> */}
-                </div>
-                <div className="text-gray-500 text-xs mt-1">
-                  {`${rating[0].ratingCount} people rated`}
-                </div>
-              </div>
-            </div>
-          )}
         </div>
+      )}
+    </div>
       </div>
     </>
   );

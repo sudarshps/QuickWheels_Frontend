@@ -142,10 +142,8 @@ and also find vehicles nearby
           </p>
         </div>
 
-        {/* Search Section */}
-        <div className="w-full sm:w-3/4 md:w-1/2 px-4 md:px-0 md:absolute md:left-1/2 md:ml-[-30rem] md:top-[450px]">
-          <div className="bg-white flex flex-col sm:flex-col md:flex-row shadow-lg rounded-lg mt-3 items-center justify-between p-4 w-full md:min-w-[60rem]">
-            {/* Location Section */}
+        <div className="w-full sm:w-3/4 md:w-1/2 px-4 md:px-0 md:absolute md:left-1/2 md:ml-[-25rem] md:top-[450px]">
+          <div className="bg-white flex flex-col sm:flex-col md:flex-row shadow-lg rounded-lg mt-3 items-center justify-between p-4 w-full md:min-w-[50rem]">
             <div className="w-full sm:w-auto mb-4 sm:mb-2 md:mb-0">
               <div className="flex items-center">
                 <FontAwesomeIcon
@@ -191,7 +189,7 @@ and also find vehicles nearby
           <div className="mt-4 border-b-2 border-red-400 w-28 mx-auto rounded-lg"></div>
         </div>
 
-        <div className="flex flex-col md:flex-row items-center justify-center space-y-8 md:space-y-0 md:space-x-16 p-6 mt-10">
+        <div className="flex flex-col md:flex-row items-center justify-center space-y-8 md:space-y-0 md:space-x-12 p-6 mt-10">
           <div className="text-center">
             <div className="bg-red-100 w-20 h-20 rounded-lg flex items-center justify-center mx-auto">
               <FontAwesomeIcon
@@ -200,7 +198,7 @@ and also find vehicles nearby
               />
             </div>
             <h3 className="font-semibold text-lg mt-4">Choose Location</h3>
-            <p className="text-gray-500 text-sm mt-2 w-64">
+            <p className="text-gray-500 text-sm mt-2 w-60">
               When you choose your location we’ll provide you the nearest
               available cars. So you can get it simply.
             </p>
@@ -214,7 +212,7 @@ and also find vehicles nearby
               />
             </div>
             <h3 className="font-semibold text-lg mt-4">Pick-Up Date</h3>
-            <p className="text-gray-500 text-sm mt-2 w-64">
+            <p className="text-gray-500 text-sm mt-2 w-60">
               Choose the Pick-Up date so that you can schedule the trip easily.
             </p>
           </div>
@@ -227,7 +225,7 @@ and also find vehicles nearby
               />
             </div>
             <h3 className="font-semibold text-lg mt-4">Book Your Car</h3>
-            <p className="text-gray-500 text-sm mt-2 w-64">
+            <p className="text-gray-500 text-sm mt-2 w-60">
               Book your favorite car and enjoy your trip.
             </p>
           </div>
