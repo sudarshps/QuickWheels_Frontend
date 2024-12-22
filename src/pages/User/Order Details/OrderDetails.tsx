@@ -144,15 +144,18 @@ const OrderDetails: React.FC = () => {
   const handleAction = () => {
     if (selectedPayment === "wallet") {
       axiosInstance.put("/cancelorder", { id: orderId }).then((res) => {
-        if (res.data) {
-          if (res.data.isCancelled) {
-            setStatus("Cancelled");
-            toast.success("Your request for refund has been processed!");
-            setIsDialogOpen(false);
-          }
+        if (res.data.response.isCancelled) {
+          setStatus("Cancelled");
+          toast.success("Your request for refund has been processed!", {
+            onClose: () => setIsDialogOpen(false), 
+          });
         }
+      }).catch((err) => {
+        toast.error("An error occurred while processing your request.");
+        console.error(err);
       });
-    } else {
+    }
+     else {
       axiosInstance
         .post("/refund", {
           amount: orderDetails?.amount,
@@ -161,7 +164,6 @@ const OrderDetails: React.FC = () => {
         })
         .then((res) => {
           setStatus("Cancelled");
-          console.log(res.data);
           Swal.fire({
             title: "Refund Processed!",
             text: `Your refund amount of ₹${res.data.razorpayResponse.amount} will be credited to your bank account within 7 business days!`,
