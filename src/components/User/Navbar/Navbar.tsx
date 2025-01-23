@@ -27,9 +27,9 @@ const Navbar: React.FC<NavbarProps> = ({className}) => {
 
   const isAuthenticated = useSelector((state: RootState) => state.auth.user);
   const email = useSelector((state: RootState) => state.auth.email);
-  const isHost = useSelector(
-    (state: RootState) => state.userDetails.isHost
-  ) as boolean;
+  // const isHost = useSelector(
+  //   (state: RootState) => state.userDetails.isHost
+  // ) as boolean;
   
   
   const handleScroll = () => {
@@ -49,9 +49,10 @@ const Navbar: React.FC<NavbarProps> = ({className}) => {
   },[])
   
 
-  useEffect(() => {
-    setHost(isHost);
-  }, []);
+  // useEffect(() => {
+  //   console.log('is',isHost);
+  //   setHost(isHost);
+  // }, []);
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -113,7 +114,8 @@ const Navbar: React.FC<NavbarProps> = ({className}) => {
         const status = res.data.status
         const note = res.data.note
         const role = res.data.role   
-        const verifiedUser = res.data.isVerified     
+        const verifiedUser = res.data.isVerified 
+        setHost(isHost)
           dispatch(setUserDetails({userId,dob,phone,drivingExpDate,address,drivingID,
             drivingIDFront,drivingIDBack,profileUpdated,isHost,status,note,role,verifiedUser}))        
       })

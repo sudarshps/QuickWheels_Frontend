@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux'
 import { RootState } from '../../../redux/store'
 import axiosInstance from '../../../api/axiosInstance'
 import Footer from '../../../components/User/Footer/Footer'
+import { toast,ToastContainer } from 'react-toastify'
 
 
 const HostStartup:React.FC = () => {
@@ -57,11 +58,11 @@ const HostStartup:React.FC = () => {
         if(verified){
           navigate('/hostregister')
         }else{
-          alert('You need to verify by admin!')
+          toast.error('You need to verify by admin!')
           navigate('/')
         }
       }else{
-        alert('please complete your profile details')
+        toast.error('please complete your profile details')
         navigate('/profile')
       }
     }
@@ -69,6 +70,18 @@ const HostStartup:React.FC = () => {
   return (
     <>
       <Navbar/>
+       <ToastContainer
+                        position="top-right"
+                        autoClose={2000}
+                        hideProgressBar={false}
+                        newestOnTop={false}
+                        closeOnClick
+                        rtl={false}
+                        pauseOnFocusLoss
+                        draggable
+                        pauseOnHover
+                        theme="colored"
+                      />
       <div className='host-page relative'>
         <div className="content-1 flex-none absolute top-32 mt-12 left-20">
         <h1 className='text-4xl font-bold'>

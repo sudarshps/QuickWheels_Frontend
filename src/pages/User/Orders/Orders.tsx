@@ -7,13 +7,13 @@ import {
   MessageSquare,
 } from "lucide-react";
 import { Button } from "../../../components/ui/button";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "../../../components/ui/select";
+// import {
+//   Select,
+//   SelectContent,
+//   SelectItem,
+//   SelectTrigger,
+//   SelectValue,
+// } from "../../../components/ui/select";
 import { Badge } from "../../../components/ui/badge";
 import {
   Table,
@@ -73,25 +73,24 @@ const Orders: React.FC<OrderFCProps> = ({ socket }) => {
   const userId = useSelector(
     (state: RootState) => state.userDetails.userId
   ) as string;
-  const [filter, setFilter] = useState("all");
+  // const [filter, setFilter] = useState("all");
   const navigate = useNavigate();
   const [orders, setOrders] = useState<OrdersProps[]>([]);
   const [hostId, setHostId] = useState("");
   const [chatId, setChatId] = useState("");
   const [isOpen, setIsOpen] = useState(false);
-  const [startIndex, setStartIndex] = useState(0);
-  const rowsPerPage = 5;
-  const [endIndex, setEndIndex] = useState(rowsPerPage);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages,setTotalPages] = useState(0)
 
   const handlePrev = () => {
-    setStartIndex(startIndex - rowsPerPage);
-    setEndIndex(endIndex - rowsPerPage);
+    if (currentPage > 1) {
+      setCurrentPage(currentPage-1)
+    }
   };
 
   const handleNext = () => {
-    if (endIndex < orders.length) {
-      setStartIndex(startIndex + rowsPerPage);
-      setEndIndex(endIndex + rowsPerPage);
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage+1)
     }
   };
 
@@ -150,13 +149,14 @@ const Orders: React.FC<OrderFCProps> = ({ socket }) => {
     axiosInstance
       .get("/userorders", {
         params: {
-          userId,
+          userId,page:currentPage
         },
       })
       .then((res) => {
-        setOrders(res.data);
+        setTotalPages(res.data.totalPages)
+        setOrders(res.data.response);
       });
-  }, []);
+  }, [currentPage,userId]);
 
   return (
     <>
@@ -164,7 +164,7 @@ const Orders: React.FC<OrderFCProps> = ({ socket }) => {
       <div className="flex flex-col userprofile items-center py-8 bg-gray-50 min-h-screen">
         <div className="bg-white shadow-lg rounded-lg w-full max-w-5xl p-10 mt-20">
           <div className="container mx-auto">
-            <div className="flex justify-between items-center mb-6">
+            {/* <div className="flex justify-between items-center mb-6">
               <h1 className="text-2xl font-bold">My Orders</h1>
               <Select value={filter} onValueChange={setFilter}>
                 <SelectTrigger className="w-[180px]">
@@ -177,7 +177,7 @@ const Orders: React.FC<OrderFCProps> = ({ socket }) => {
                   <SelectItem value="completed">Completed</SelectItem>
                 </SelectContent>
               </Select>
-            </div>
+            </div> */}
             {orders.length ? (
               <div className="overflow-x-auto">
                 <Table>
@@ -192,7 +192,7 @@ const Orders: React.FC<OrderFCProps> = ({ socket }) => {
                     </TableRow>
                   </TableHeader>
                   <TableBody>
-                    {orders.slice(startIndex,endIndex).map((order, ind) => {
+                    {orders.map((order, ind) => {
                       const status = calculateOrderStatus(
                         order?.pickUpDate,
                         order?.dropOffDate,
@@ -271,24 +271,24 @@ const Orders: React.FC<OrderFCProps> = ({ socket }) => {
                   </TableBody>
                 </Table>
 
-                 <PaginationMain>
-                    <PaginationContent>
-                      <PaginationItem>
-                        <PaginationPrevious onClick={handlePrev}/>
-                      </PaginationItem>
-                      <PaginationItem>
-                        <PaginationLink href="#" size={"default"}>
-                          1
-                        </PaginationLink>
-                      </PaginationItem>
-                      <PaginationItem>
-                        <PaginationEllipsis />
-                      </PaginationItem>
-                      <PaginationItem>
-                        <PaginationNext onClick={handleNext} />
-                      </PaginationItem>
-                    </PaginationContent>
-                  </PaginationMain>
+                <PaginationMain>
+                  <PaginationContent>
+                    <PaginationItem>
+                      <PaginationPrevious onClick={handlePrev} className="hover:cursor-pointer"/>
+                    </PaginationItem>
+                    <PaginationItem>
+                      <PaginationLink href="#" size={"default"}>
+                        {currentPage}
+                      </PaginationLink>
+                    </PaginationItem>
+                    <PaginationItem>
+                      <PaginationEllipsis />
+                    </PaginationItem>
+                    <PaginationItem>
+                      <PaginationNext onClick={handleNext} className="hover:cursor-pointer"/>
+                    </PaginationItem>
+                  </PaginationContent>
+                </PaginationMain>
               </div>
             ) : (
               <h1 className="font-semibold">No Orders Found!</h1>
@@ -311,7 +311,7 @@ const Orders: React.FC<OrderFCProps> = ({ socket }) => {
             ""
           )}
         </div>
-        <Footer/>
+        <Footer />
       </div>
     </>
   );

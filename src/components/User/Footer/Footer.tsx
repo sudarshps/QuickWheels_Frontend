@@ -12,7 +12,7 @@ const Footer:React.FC = () => {
     <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
       <div>
       <Link
-          to="http://localhost:5173/"
+          to={import.meta.env.VITE_FRONTEND_URL}
           className="flex items-center rtl:space-x-reverse"
         >
           <span className="Logo-Quick py-1 px-1 self-center text-xl font-bold whitespace-nowrap dark:text-white rounded-md italic">

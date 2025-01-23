@@ -4,7 +4,6 @@ import axios from "axios";
 import Navbar from "../../../components/User/Navbar/Navbar";
 import LoginImage from "../../../assets/carlogin.jpg";
 import GoogleLogo from "../../../assets/icons8-google.svg";
-import FbLogo from "../../../assets/icons8-facebook.svg";
 import Modal from "../../../components/User/Login Modal/loginModal";
 import { useNavigate } from "react-router-dom";
 import { AppDispatch } from "../../../redux/store";
@@ -14,6 +13,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { useGoogleLogin } from "@react-oauth/google";
 import Footer from "../../../components/User/Footer/Footer";
+import { toast,ToastContainer } from "react-toastify";
 
 interface UserProps {
   access_token: string;
@@ -39,7 +39,7 @@ const Login: React.FC = () => {
   const checkEmail = async () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-      alert("provide correct email");
+      toast.error("Provide correct email");
       return;
     }
 
@@ -85,7 +85,7 @@ const Login: React.FC = () => {
     }
 
     if (!userName.trim()) {
-      alert("provide a username");
+      toast.error("Provide a username");
       return;
     }
 
@@ -93,17 +93,17 @@ const Login: React.FC = () => {
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
     if (!password.trim()) {
-      alert("provide a password");
+      toast.error("Provide a password");
       return;
     }
 
     if (!passwordRegex.test(password)) {
-      alert("password should be strong");
+      toast.error("Password should be strong");
       return;
     }
 
     if (confirmPassword !== password) {
-      alert("mismatch in confirm password!");
+      toast.error("mismatch in confirm password!");
       return;
     }
 
@@ -269,6 +269,18 @@ const Login: React.FC = () => {
         children
       ></Modal>
       <Navbar />
+      <ToastContainer
+                position="top-right"
+                autoClose={2000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="colored"
+              />
       <div
         className={`main-div ${
           openModal ? "blur-sm" : ""
@@ -396,19 +408,19 @@ const Login: React.FC = () => {
                   <div className="social-sign flex justify-center space-x-4">
                     <div
                       onClick={() => googleSignIn()}
-                      className="social-sign flex items-center space-x-2 w-24 h-10 p-1 bg-white rounded justify-center hover:cursor-pointer"
+                      className="social-sign flex items-center space-x-2 w-48 h-10 p-1 bg-white rounded justify-center hover:cursor-pointer"
                     >
                       <img
                         src={GoogleLogo}
                         alt="Google logo"
                         className="w-5 h-5"
                       />
-                      <h1 className="text-sm font-semibold">Sign In</h1>
+                      <h1 className="text-sm font-semibold">Sign In With Google</h1>
                     </div>
-                    <div className="social-sign flex items-center space-x-2 w-24 h-10 p-1 bg-white rounded justify-center hover:cursor-pointer">
+                    {/* <div className="social-sign flex items-center space-x-2 w-24 h-10 p-1 bg-white rounded justify-center hover:cursor-pointer">
                       <img src={FbLogo} alt="Google logo" className="w-5 h-5" />
                       <h1 className="text-sm font-semibold">Sign In</h1>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>

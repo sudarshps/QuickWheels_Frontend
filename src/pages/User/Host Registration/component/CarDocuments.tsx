@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { debounce } from "lodash";
+import { ToastContainer, toast } from "react-toastify";
+
 
 type HostFormProps = {
   images: File[];
@@ -40,7 +42,7 @@ const CarDocuments: React.FC<updatedProps> = ({
         setPreviews(imagePreviews);
         updatedField({ images: selectedFiles });
       }else{
-        alert('only accepts image files!')
+        toast.error('only accepts image files!')
         e.target.value = ''
         return
       }
@@ -57,7 +59,7 @@ const CarDocuments: React.FC<updatedProps> = ({
     if(!date) return 
 
     if(date<new Date()){
-      alert('Date must be future!')
+      toast.error('Date must be future!')
       return
     }
 
@@ -77,7 +79,7 @@ const CarDocuments: React.FC<updatedProps> = ({
           updatedField({ RCDoc: file as File});
         }
       }else{
-        alert('only image files and pdf allowed!')
+        toast.error('only image files and pdf allowed!')
         e.target.value = ''
         return
       }
@@ -97,7 +99,7 @@ const CarDocuments: React.FC<updatedProps> = ({
 
       updatedField({ InsuranceDoc: file });
     }else{
-      alert('only image files and pdf allowed!')
+      toast.error('only image files and pdf allowed!')
       e.target.value = ''
       return
     }
@@ -114,6 +116,18 @@ const CarDocuments: React.FC<updatedProps> = ({
 
   return (
     <>
+    <ToastContainer
+              position="top-right"
+              autoClose={2000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="colored"
+            />
       <h1 className="text-2xl font-semibold mb-4">Provide Car Documents</h1>
       <div className="grid grid-cols-2 mt-10">
         <div>

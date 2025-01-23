@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axiosInstance from "../../../../api/axiosInstance";
+import { ToastContainer, toast } from "react-toastify";
 
 
 interface Feature {
@@ -50,10 +51,14 @@ const HostRegister: React.FC<updatedProps> = ({make,carModel,carType,transmissio
 
   const handleRentAmount = (amount:string) => {
     const numberRegex = /^\d+$/;
-    if(!numberRegex.test(amount)){
-      alert('Amount must be a number!')
-      return
-    }
+
+    setTimeout(() => {
+      if(!numberRegex.test(amount)){
+        toast.error('Amount must be a number!')
+        return
+      }
+    }, 2000);
+    
 
       updatedField({rentAmount:amount})
   }
@@ -125,7 +130,18 @@ const HostRegister: React.FC<updatedProps> = ({make,carModel,carType,transmissio
 
   return (
     <>
-    
+        <ToastContainer
+                  position="top-right"
+                  autoClose={2000}
+                  hideProgressBar={false}
+                  newestOnTop={false}
+                  closeOnClick
+                  rtl={false}
+                  pauseOnFocusLoss
+                  draggable
+                  pauseOnHover
+                  theme="colored"
+                />
           <h1 className="text-2xl font-semibold mb-4">Enter Car Details</h1>
           <div className="grid grid-cols-2 gap-6 mt-10">
             <div>

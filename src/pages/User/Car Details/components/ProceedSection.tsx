@@ -12,6 +12,7 @@ import {
   DialogTitle,
 } from "../../../../components/ui/dialog";
 import { Button } from "../../../../components/ui/button";
+import { toast,ToastContainer } from "react-toastify";
 
 interface ProceedSectionFCProps{
   amount:number | undefined;
@@ -137,7 +138,7 @@ const ProceedSection: React.FC<ProceedSectionFCProps> = ({ amount, carId, handle
 
   const makeWalletPayment = () => {
     if (walletBalance < totalAmount) {
-      alert("Insufficient Balance!");
+      toast.error("Insufficient Balance!");
       return;
     }
     
@@ -173,6 +174,18 @@ const ProceedSection: React.FC<ProceedSectionFCProps> = ({ amount, carId, handle
   return (
     <div className="lg:w-1/3">
       <div>
+        <ToastContainer
+                          position="top-right"
+                          autoClose={2000}
+                          hideProgressBar={false}
+                          newestOnTop={false}
+                          closeOnClick
+                          rtl={false}
+                          pauseOnFocusLoss
+                          draggable
+                          pauseOnHover
+                          theme="colored"
+                        />
         <Dialog open={isOpenModal} onOpenChange={setIsOpenModal}>
           <DialogContent className="sm:max-w-[425px]">
             <DialogHeader>

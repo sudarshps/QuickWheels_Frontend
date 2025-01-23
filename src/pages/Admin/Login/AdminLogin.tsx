@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 import {useNavigate} from 'react-router-dom'
 import { setAdminToken } from '../../../slices/adminAuthSlice';
 import { useDispatch } from 'react-redux';
+import { ToastContainer, toast } from "react-toastify";
+
 
 
 const AdminLogin: React.FC = () => {
@@ -18,12 +20,12 @@ const AdminLogin: React.FC = () => {
 
   const handleLogin = async() => {
     if(!email.trim()){
-      alert('please provide email')
+      toast.error('Please provide email')
       return
     }
 
     if(!password.trim()){
-      alert('please provide password')
+      toast.error('Please provide password')
       return
     }
 
@@ -50,6 +52,18 @@ const AdminLogin: React.FC = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#0A0C2D]">
+      <ToastContainer
+                position="top-right"
+                autoClose={2000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="colored"
+              />
       <div className="bg-gradient-to-b from-[#0E1145] to-[#11208C] rounded-lg shadow-lg p-10 max-w-xs w-full">
         <h2 className="text-white text-2xl font-semibold text-center mb-6">Admin Login</h2>
         <form>

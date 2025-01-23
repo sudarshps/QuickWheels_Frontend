@@ -160,7 +160,7 @@ const CarDetails: React.FC = () => {
       setPreviews(imagePreviews);
       setCarImage(selectedFiles)
     } else {
-      alert("only accepts image files!");
+      toast.error("only accepts image files!");
       event.target.value = "";
       return;
     }
@@ -194,7 +194,7 @@ const CarDetails: React.FC = () => {
         setRcImage(file)
         setRemovedImages({...removedImages,rcFile:carDetails?.RCDoc})
       } else {
-        alert("ventonly image files and pdf allowed!");
+        toast.error("Only image files and pdf allowed!");
         event.target.value = "";
         return;
       }
@@ -218,7 +218,7 @@ const CarDetails: React.FC = () => {
         setRemovedImages({...removedImages,insuranceFile:carDetails?.InsuranceDoc})
 
       } else {
-        alert("only image files and pdf allowed!");
+        toast.error("only image files and pdf allowed!");
         event.target.value = "";
         return;
       }
@@ -320,7 +320,7 @@ const CarDetails: React.FC = () => {
     if (!date) return;
 
     if (date < new Date()) {
-      alert("Date must be future!");
+      toast.error("Date must be future!");
       return;
     }
 

@@ -13,6 +13,8 @@ import NavigationMenu from "./components/NavigationMenu.tsx";
 import LocationUI from "./components/LocationUI.tsx";
 import { DatePickerWithRange } from "../../../components/ui/daterangepicker.tsx";
 import { DateRange } from "react-day-picker";
+import { ToastContainer, toast } from "react-toastify";
+
 
 import {
   Card,
@@ -38,7 +40,7 @@ const Home: React.FC = () => {
 
   const handleBookButton = () => {
     if (!date) {
-      alert("select dates!");
+      toast.error("Please select the dates!");
       return;
     }
     navigate("/availablecars");
@@ -72,11 +74,6 @@ and also find vehicles nearby
     },
   ];
 
-  // useEffect(()=>{
-  //   if(date){
-  //     sessionStorage.setItem('date',JSON.stringify(date))
-  //   }
-  // },[date])
 
   useEffect(() => {
     if (date && date.from && date.to) {
@@ -125,6 +122,18 @@ and also find vehicles nearby
   return (
     <>
       <Navbar />
+       <ToastContainer
+                position="top-right"
+                autoClose={2000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="colored"
+              />
       <div className="home-page relative min-h-screen w-full">
         {/* Hero Section */}
         <div className="content-1 px-4 md:px-0 md:absolute md:top-28 md:mt-8 md:left-20 pt-40 md:pt-0">
