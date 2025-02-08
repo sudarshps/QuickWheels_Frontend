@@ -93,11 +93,11 @@ const LocationUI: React.FC<ChildProps> = ({getLocation}) => {
 
   return (
     <div className="m-4">
-        <div className="flex gap-8">
+        <div className="flex gap-8 h-20 md:h-full">
       <Input
         type="text"
         placeholder="Enter location"
-        className="w-80 h-12"
+        className="md:w-80 md:h-12"
         value={userLocation}
         onChange={handleLocationSelection}
       />
