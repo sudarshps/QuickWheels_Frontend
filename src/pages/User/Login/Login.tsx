@@ -288,7 +288,7 @@ const Login: React.FC = () => {
       >
         {" "}
         <div className="flex-grow flex items-center justify-center px-4 py-8">
-          <div className="login-card flex flex-col md:flex-row items-center justify-center h-96 md:h-full w-3/4 bg-white rounded-lg overflow-hidden shadow-lg">
+          <div className={`login-card flex flex-col md:flex-row items-center justify-center ${login===false?`h-[600px]`:`h-[450px]`} md:h-full w-3/4 bg-white rounded-lg overflow-hidden shadow-lg`}>
             <div
               className={`
              image-container hidden md:block w-full md:w-1/2 
