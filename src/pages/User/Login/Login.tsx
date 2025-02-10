@@ -168,7 +168,7 @@ const Login: React.FC = () => {
 
   const googleLogin = async () => {
     try {
-      window.location.href = 'http://localhost:3000/auth';
+      window.location.href = `${import.meta.env.VITE_BACKEND_URL}/auth`;
     } catch (error) {
       console.log(error);
       
