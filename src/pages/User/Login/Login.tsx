@@ -226,6 +226,7 @@ const Login: React.FC = () => {
   //   onSuccess: (codeResponse) => setUser(codeResponse),
   //   onError: (error) => console.log("Login Failed:", error),
   // });
+  console.log('token',token);
 
   useEffect(() => {
     let password = import.meta.env.VITE_GOOGLE_LOGIN_PASS;
