@@ -230,6 +230,8 @@ const Login: React.FC = () => {
   useEffect(() => {
     let password = import.meta.env.VITE_GOOGLE_LOGIN_PASS;
     if (token) {      
+      console.log('logintoken',token);
+      
       // axios
       //   .get(
       //     `https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user.access_token}`,
