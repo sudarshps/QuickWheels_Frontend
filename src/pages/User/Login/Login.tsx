@@ -14,9 +14,15 @@ import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { useGoogleLogin } from "@react-oauth/google";
 import Footer from "../../../components/User/Footer/Footer";
 import { toast,ToastContainer } from "react-toastify";
+import Cookies from 'js-cookie'
 
-interface UserProps {
-  access_token: string;
+// interface UserProps {
+//   access_token: string;
+// }
+
+interface UserProps{
+  email:string;
+  name:string;
 }
 
 const Login: React.FC = () => {
@@ -30,6 +36,7 @@ const Login: React.FC = () => {
   const [invalidMsg, setInvalidMsg] = useState("");
   const [loginError, setLoginError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [token,setToken] = useState<string>("")
 
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
@@ -159,6 +166,21 @@ const Login: React.FC = () => {
     }
   };
 
+  const googleLogin = async () => {
+    try {
+      window.location.href = 'http://localhost:3000/auth';
+    } catch (error) {
+      console.log(error);
+      
+    }
+  }
+
+  useEffect(()=>{
+    const token = Cookies.get('auth_token')
+    if(token)setToken(token)
+  },[])
+
+
   const userLogin = async () => {
     interface response {
       validUser: boolean;
@@ -201,26 +223,32 @@ const Login: React.FC = () => {
     }
   };
 
-  const googleSignIn = useGoogleLogin({    
-    onSuccess: (codeResponse) => setUser(codeResponse),
-    onError: (error) => console.log("Login Failed:", error),
-  });
+  // const googleSignIn = useGoogleLogin({    
+  //   onSuccess: (codeResponse) => setUser(codeResponse),
+  //   onError: (error) => console.log("Login Failed:", error),
+  // });
 
   useEffect(() => {
     let password = import.meta.env.VITE_GOOGLE_LOGIN_PASS;
-    if (user) {
-      axios
-        .get(
-          `https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user.access_token}`,
-          {
-            headers: {
-              Authorization: `Bearer ${user.access_token}`,
-              Accept: "application/json",
-            },
-          }
-        )
+    if (token) {      
+      // axios
+      //   .get(
+      //     `https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user.access_token}`,
+      //     {
+      //       headers: {
+      //         Authorization: `Bearer ${user.access_token}`,
+      //         Accept: "application/json",
+      //       },
+      //     }
+      //   )            
+      axiosInstance.get("/verifyToken",{
+        headers:{
+          Authorization: `Bearer ${token}`
+        }
+      })
         .then((res) => {
-          if (res.data) {
+          if (res.data){    
+            console.log(res.data);              
             const email = res.data.email;
             const name = res.data.given_name;
             axiosInstance.post("/checkMail", { email }).then((res) => {
@@ -256,7 +284,7 @@ const Login: React.FC = () => {
         })
         .catch((err) => console.log(err));
     }
-  }, [user]);
+  }, [user,token]);
 
   return (
     <>
@@ -407,7 +435,7 @@ const Login: React.FC = () => {
                   <hr className="border-gray-500 my-8" />
                   <div className="social-sign flex justify-center space-x-4">
                     <div
-                      onClick={() => googleSignIn()}
+                      onClick={() => googleLogin()}
                       className="social-sign flex items-center space-x-2 w-48 h-10 p-1 bg-white rounded justify-center hover:cursor-pointer"
                     >
                       <img
