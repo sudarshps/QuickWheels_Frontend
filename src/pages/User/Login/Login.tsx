@@ -246,7 +246,8 @@ const Login: React.FC = () => {
       axiosInstance.get("/verifyToken",{
         headers:{
           Authorization: `Bearer ${token}`
-        }
+        },
+        withCredentials:true
       })
         .then((res) => {
           if (res.data){    
