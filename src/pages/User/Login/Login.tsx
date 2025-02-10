@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axiosInstance from "../../../api/axiosInstance";
-import axios from "axios";
 import Navbar from "../../../components/User/Navbar/Navbar";
 import LoginImage from "../../../assets/carlogin.jpg";
 import GoogleLogo from "../../../assets/icons8-google.svg";
@@ -11,7 +10,7 @@ import { setAuthorization } from "../../../slices/authSlice";
 import { useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
-import { useGoogleLogin } from "@react-oauth/google";
+// import { useGoogleLogin } from "@react-oauth/google";
 import Footer from "../../../components/User/Footer/Footer";
 import { toast,ToastContainer } from "react-toastify";
 import Cookies from 'js-cookie'
@@ -20,13 +19,13 @@ import Cookies from 'js-cookie'
 //   access_token: string;
 // }
 
-interface UserProps{
-  email:string;
-  name:string;
-}
+// interface UserProps{
+//   email:string;
+//   name:string;
+// }
 
 const Login: React.FC = () => {
-  const [user, setUser] = useState<UserProps | null>(null);
+  // const [user, setUser] = useState<UserProps | null>(null);
   const [openModal, setOpenModal] = useState(false);
   const [email, setEmail] = useState("");
   const [login, setLogin] = useState<boolean | null>(null);
@@ -284,7 +283,7 @@ const Login: React.FC = () => {
         })
         .catch((err) => console.log(err));
     }
-  }, [user,token]);
+  }, [token]);
 
   return (
     <>
