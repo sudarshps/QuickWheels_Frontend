@@ -4,28 +4,18 @@ import Navbar from "../../../components/User/Navbar/Navbar";
 import LoginImage from "../../../assets/carlogin.jpg";
 import GoogleLogo from "../../../assets/icons8-google.svg";
 import Modal from "../../../components/User/Login Modal/loginModal";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,useLocation } from "react-router-dom";
 import { AppDispatch } from "../../../redux/store";
 import { setAuthorization } from "../../../slices/authSlice";
 import { useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
-// import { useGoogleLogin } from "@react-oauth/google";
 import Footer from "../../../components/User/Footer/Footer";
 import { toast,ToastContainer } from "react-toastify";
-import Cookies from 'js-cookie'
 
-// interface UserProps {
-//   access_token: string;
-// }
 
-// interface UserProps{
-//   email:string;
-//   name:string;
-// }
 
 const Login: React.FC = () => {
-  // const [user, setUser] = useState<UserProps | null>(null);
   const [openModal, setOpenModal] = useState(false);
   const [email, setEmail] = useState("");
   const [login, setLogin] = useState<boolean | null>(null);
@@ -38,6 +28,9 @@ const Login: React.FC = () => {
   const [token,setToken] = useState<string>("")
 
   const navigate = useNavigate();
+  const location = useLocation()
+  const searchParams = new URLSearchParams(location.search)
+  
   const dispatch = useDispatch<AppDispatch>();
 
   axiosInstance.defaults.withCredentials = true;
@@ -175,7 +168,7 @@ const Login: React.FC = () => {
   }
 
   useEffect(()=>{
-    const token = Cookies.get('auth_token')
+    const token = searchParams.get('auth')
     if(token)setToken(token)
   },[])
 
@@ -222,27 +215,10 @@ const Login: React.FC = () => {
     }
   };
 
-  // const googleSignIn = useGoogleLogin({    
-  //   onSuccess: (codeResponse) => setUser(codeResponse),
-  //   onError: (error) => console.log("Login Failed:", error),
-  // });
-  console.log('token',token);
 
   useEffect(() => {
     let password = import.meta.env.VITE_GOOGLE_LOGIN_PASS;
-    if (token) {      
-      console.log('logintoken',token);
-      
-      // axios
-      //   .get(
-      //     `https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user.access_token}`,
-      //     {
-      //       headers: {
-      //         Authorization: `Bearer ${user.access_token}`,
-      //         Accept: "application/json",
-      //       },
-      //     }
-      //   )            
+    if (token) {                    
       axiosInstance.get("/verifyToken",{
         headers:{
           Authorization: `Bearer ${token}`
@@ -448,10 +424,7 @@ const Login: React.FC = () => {
                       />
                       <h1 className="text-sm font-semibold">Sign In With Google</h1>
                     </div>
-                    {/* <div className="social-sign flex items-center space-x-2 w-24 h-10 p-1 bg-white rounded justify-center hover:cursor-pointer">
-                      <img src={FbLogo} alt="Google logo" className="w-5 h-5" />
-                      <h1 className="text-sm font-semibold">Sign In</h1>
-                    </div> */}
+                   
                   </div>
                 </div>
               </div>
