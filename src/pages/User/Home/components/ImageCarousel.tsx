@@ -6,8 +6,6 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from "../../../../components/ui/carousel";
 import Img1 from "../../../../assets/carouselimg1.jpg"
 import Img2 from "../../../../assets/carouselimg2.jpg"
@@ -48,8 +46,6 @@ export default function CarouselPlugin() {
           </CarouselItem>
         ))}
       </CarouselContent>
-      {/* <CarouselPrevious />
-      <CarouselNext /> */}
     </Carousel>
   );
 }
