@@ -311,8 +311,9 @@ const Orders: React.FC<OrderFCProps> = ({ socket }) => {
             ""
           )}
         </div>
-        <Footer />
       </div>
+      <Footer />
+
     </>
   );
 };

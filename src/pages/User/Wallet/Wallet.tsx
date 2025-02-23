@@ -135,8 +135,8 @@ const WalletUI: React.FC = () => {
             </CardContent>
           </Card>
         </div>
-        <Footer/>
       </div>
+      <Footer/>
     </>
   );
 };

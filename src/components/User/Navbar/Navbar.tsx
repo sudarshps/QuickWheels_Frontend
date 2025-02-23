@@ -27,10 +27,6 @@ const Navbar: React.FC<NavbarProps> = ({className}) => {
 
   const isAuthenticated = useSelector((state: RootState) => state.auth.user);
   const email = useSelector((state: RootState) => state.auth.email);
-  // const isHost = useSelector(
-  //   (state: RootState) => state.userDetails.isHost
-  // ) as boolean;
-  
   
   const handleScroll = () => {
     
@@ -47,12 +43,7 @@ const Navbar: React.FC<NavbarProps> = ({className}) => {
       window.removeEventListener('scroll',handleScroll)
     }
   },[])
-  
 
-  // useEffect(() => {
-  //   console.log('is',isHost);
-  //   setHost(isHost);
-  // }, []);
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -140,156 +131,158 @@ const Navbar: React.FC<NavbarProps> = ({className}) => {
   };
 
   return (
-    <nav className={`${className} p-4 fixed w-full z-50 transition-colors duration-300 ${isScrolled?'bg-white shadow-md':'bg-transparent'}`}>
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between md:mx-12 p-4">
-        <Link
-          to={import.meta.env.VITE_FRONTEND_URL}
-          className="flex items-center rtl:space-x-reverse"
-        >
-          <span className="Logo-Quick py-1 px-1 self-center text-xl font-bold whitespace-nowrap dark:text-white rounded-md italic">
-            Quick
-          </span>
-          <span className="self-center text-lg font-bold whitespace-nowrap dark:text-white italic">
-            Wheels
-          </span>
-        </Link>
-        <button
-          onClick={toggleMenu}
-          type="button"
-          className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-          aria-controls="navbar-default"
-          aria-expanded="false"
-        >
-          <span className="sr-only">Open main menu</span>
-          <svg
-            className="w-5 h-5"
-            aria-hidden="true"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 17 14"
+
+    <nav className={`${className} p-4 fixed w-full z-50 transition-colors duration-300 ${isScrolled ? 'bg-white shadow-md' : 'bg-transparent'}`}>
+      <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center">
+          <Link
+            to={import.meta.env.VITE_FRONTEND_URL}
+            className="flex items-center"
           >
-            <path
+            <span className="Logo-Quick py-1 px-1 text-xl font-bold italic rounded-md dark:text-white">
+              Quick
+            </span>
+            <span className="text-lg font-bold italic dark:text-white">
+              Wheels
+            </span>
+          </Link>
+
+          <button
+            onClick={toggleMenu}
+            type="button"
+            className="md:hidden inline-flex items-center justify-center p-2 rounded-lg text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+            aria-controls="navbar-default"
+            aria-expanded={isMenuOpen}
+          >
+            <span className="sr-only">Open main menu</span>
+            <svg
+              className="w-6 h-6"
+              aria-hidden="true"
+              fill="none"
+              viewBox="0 0 24 24"
               stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M1 1h15M1 7h15M1 13h15"
-            />
-          </svg>
-        </button>
-        <div
-          className={`${
-            isMenuOpen ? "block" : "hidden"
-          } w-full md:block md:w-auto`}
-          id="navbar-default"
-        >
-          <ul
-            className={`font-medium flex flex-col p-4 md:p-0 mt-4 items-center rounded-lg border md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0  dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700 ${
-              isMenuOpen ? "bg-gray-50 dark:bg-gray-800" : ""
-            }`}
-          >
-            <li>
-              <Link
-                to="/"
-                className="block py-2 px-3 text-white bg-red-500 rounded md:bg-transparent md:text-red-600 md:p-0 dark:text-white md:dark:text-blue-500"
-                aria-current="page"
-              >
-                Home
-              </Link>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-red-600 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-              >
-                About Us
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-red-600 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-              >
-                Services
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-red-600 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-              >
-                Contact Us
-              </a>
-            </li>
-            <li>
-              {isAuthenticated ? (
-                <div>
-                  <span
-                    className="md:hover:text-red-600"
-                    onClick={toggleDropdown}
-                    style={{ cursor: "pointer" }}
-                  >
-                    <FontAwesomeIcon icon={faUser} />
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </button>
 
-                    <FontAwesomeIcon icon={faCaretDown} />
-                  </span>
-
-                  {isDropdownOpen && (
-                    <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 shadow-lg rounded">
-                      <ul className="py-1">
-                        <li
-                          className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
-                          onClick={() => navigate("/profile")}
-                        >
-                          Profile
-                        </li>
-                        {!host ? (
-                          <li
-                            className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
-                            onClick={() => navigate("/becomehost")}
+          <div className={`
+            ${isMenuOpen ? 'block' : 'hidden'} 
+            absolute top-full left-0 right-0 md:static md:block md:w-auto
+            bg-white md:bg-transparent shadow-lg md:shadow-none
+            mt-2 md:mt-0 transition-all duration-300 ease-in-out
+          `}>
+            <ul className="flex flex-col md:flex-row md:items-center md:space-x-8 p-4 md:p-0">
+              <li className="py-2 md:py-0">
+                <Link
+                  to="/"
+                  className="block text-red-600 hover:text-red-700 md:inline-block"
+                >
+                  Home
+                </Link>
+              </li>
+              <li className="py-2 md:py-0">
+                <a
+                  href="#"
+                  className="block text-gray-900 hover:text-red-600 md:inline-block"
+                >
+                  About Us
+                </a>
+              </li>
+              <li className="py-2 md:py-0">
+                <a
+                  href="#"
+                  className="block text-gray-900 hover:text-red-600 md:inline-block"
+                >
+                  Services
+                </a>
+              </li>
+              <li className="py-2 md:py-0">
+                <a
+                  href="#"
+                  className="block text-gray-900 hover:text-red-600 md:inline-block"
+                >
+                  Contact Us
+                </a>
+              </li>
+              
+              <li className="relative py-2 md:py-0">
+                {isAuthenticated ? (
+                  <div className="relative">
+                    <button
+                      onClick={toggleDropdown}
+                      className="flex items-center space-x-2 text-gray-900 hover:text-red-600"
+                    >
+                      <FontAwesomeIcon icon={faUser} />
+                      <FontAwesomeIcon icon={faCaretDown} />
+                    </button>
+                    
+                    {isDropdownOpen && (
+                      <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg z-50">
+                        <div className="py-1">
+                          <button
+                            onClick={() => navigate("/profile")}
+                            className="w-full text-left px-4 py-2 text-gray-900 hover:bg-gray-100"
                           >
-                            Become a host
-                          </li>
-                        ) : (
-                          <li
-                            className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
-                            onClick={() => navigate("/hostdashboard")}
-                          >
-                            My Dashboard
-                          </li>
-                        )}
-                        <li
-                            className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                            Profile
+                          </button>
+                          
+                          {!host ? (
+                            <button
+                              onClick={() => navigate("/becomehost")}
+                              className="w-full text-left px-4 py-2 text-gray-900 hover:bg-gray-100"
+                            >
+                              Become a host
+                            </button>
+                          ) : (
+                            <button
+                              onClick={() => navigate("/hostdashboard")}
+                              className="w-full text-left px-4 py-2 text-gray-900 hover:bg-gray-100"
+                            >
+                              My Dashboard
+                            </button>
+                          )}
+                          
+                          <button
                             onClick={() => navigate("/orders")}
+                            className="w-full text-left px-4 py-2 text-gray-900 hover:bg-gray-100"
                           >
-                           My Orders
-                          </li>
-                          <li
-                            className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                            My Orders
+                          </button>
+                          
+                          <button
                             onClick={() => navigate("/mywallet")}
+                            className="w-full text-left px-4 py-2 text-gray-900 hover:bg-gray-100"
                           >
                             QuickWallet
-                          </li>
-                        <li
-                          className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
-                          onClick={handleLogout}
-                        >
-                          Logout
-                        </li>
-                      </ul>
-                    </div>
-                  )}
-                </div>
-              ) : (
-                <button
-                  className="block bg-red-600 text-white font-medium py-1 px-3 rounded hover:text-black"
-                  onClick={signIn}
-                >
-                  Sign In
-                </button>
-              )}
-            </li>
-          </ul>
+                          </button>
+                          
+                          <button
+                            onClick={handleLogout}
+                            className="w-full text-left px-4 py-2 text-gray-900 hover:bg-gray-100"
+                          >
+                            Logout
+                          </button>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <button
+                    onClick={signIn}
+                    className="w-full md:w-auto px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
+                  >
+                    Sign In
+                  </button>
+                )}
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </nav>
