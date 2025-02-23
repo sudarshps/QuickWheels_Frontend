@@ -61,7 +61,7 @@ const CarDetailsSection: React.FC<CarDetailsFCProps> = ({
               icon={faRectangleXmark}
               className="absolute top-2 right-2 text-red-500 cursor-pointer h-6 w-6"
               onClick={(e) => {
-                e.stopPropagation(); 
+                e.stopPropagation();
                 setEnlargedImg(false);
               }}
             />
@@ -76,56 +76,59 @@ const CarDetailsSection: React.FC<CarDetailsFCProps> = ({
             className="w-full h-96 object-cover rounded-lg cursor-pointer"
             onClick={() => setEnlargedImg(true)}
           />
-          <div className="mt-2 flex space-x-1 md:space-x-3">
+          <div className="mt-2 flex flex-wrap gap-2 justify-center md:justify-start md:gap-3 px-4 md:px-8">
             {carImages.map((img, ind) => (
               <img
                 key={ind}
-                src={`${img}`}
+                src={img}
                 alt="Interior"
-                className="w-[4rem] md:w-[6rem] h-16 md:h-24 object-cover rounded-lg cursor-pointer"
+                className="w-[4rem] sm:w-[6rem] md:w-[8rem] h-16 sm:h-20 md:h-24 object-cover rounded-lg cursor-pointer transition-transform duration-200 hover:scale-105"
                 onClick={() => setSelectedImg(img)}
               />
             ))}
           </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 bg-gray-100 rounded-lg p-4 gap-4">
-      <div className="space-y-4">
-        <div>
-          <h1 className="text-3xl font-bold">
-            {make} <span>{model}</span>
-          </h1>
-          <div className="text-gray-600 mt-2">
-            {transmission} · {fuel} · {seat} · {type}
-          </div>
-        </div>
-
-        <div className="flex items-center text-gray-700">
-          <FontAwesomeIcon icon={faUser} className="w-5 h-5 mr-3" />
-          <span>Hosted by {hostName}</span>
-        </div>
-
-        <div>
-          <h2 className="font-semibold text-lg mb-2">Car Location</h2>
-          <p className="text-gray-600">{address}</p>
-        </div>
-      </div>
-
-      {rating && rating.length > 0 && (
-        <div className="flex justify-end items-start">
-          <div className="bg-white rounded-lg shadow-md p-4 w-40 text-center">
-            <div className="flex justify-center items-center space-x-2 mb-2">
-              <FontAwesomeIcon icon={faStar} className="text-yellow-500 text-2xl" />
-              <span className="text-yellow-500 font-bold text-3xl">
-                {rating[0].overallRating.toFixed(1)}
-              </span>
+          <div className="space-y-4">
+            <div>
+              <h1 className="text-3xl font-bold">
+                {make} <span>{model}</span>
+              </h1>
+              <div className="text-gray-600 mt-2">
+                {transmission} · {fuel} · {seat} · {type}
+              </div>
             </div>
-            <div className="text-gray-500 text-sm">
-              {`${rating[0].ratingCount} people rated`}
+
+            <div className="flex items-center text-gray-700">
+              <FontAwesomeIcon icon={faUser} className="w-5 h-5 mr-3" />
+              <span>Hosted by {hostName}</span>
+            </div>
+
+            <div>
+              <h2 className="font-semibold text-lg mb-2">Car Location</h2>
+              <p className="text-gray-600">{address}</p>
             </div>
           </div>
+
+          {rating && rating.length > 0 && (
+            <div className="flex justify-end items-start">
+              <div className="bg-white rounded-lg shadow-md p-4 w-40 text-center">
+                <div className="flex justify-center items-center space-x-2 mb-2">
+                  <FontAwesomeIcon
+                    icon={faStar}
+                    className="text-yellow-500 text-2xl"
+                  />
+                  <span className="text-yellow-500 font-bold text-3xl">
+                    {rating[0].overallRating.toFixed(1)}
+                  </span>
+                </div>
+                <div className="text-gray-500 text-sm">
+                  {`${rating[0].ratingCount} people rated`}
+                </div>
+              </div>
+            </div>
+          )}
         </div>
-      )}
-    </div>
       </div>
     </>
   );
