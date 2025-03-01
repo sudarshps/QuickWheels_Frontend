@@ -193,7 +193,7 @@ const Login: React.FC = () => {
         email,
         password,
         loginMethod,
-      });
+      },{withCredentials:true});
 
       if (userResponse.data.validUser) {
         const profileUpdated = userResponse.data.profileUpdated;
