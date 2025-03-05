@@ -78,57 +78,57 @@ const Home = () => {
       <ToastContainer position="top-right" theme="colored" />
 
       <div className="relative">
-        <div className="container mx-auto px-4 py-24 sm:py-32">
-          <div className="grid lg:grid-cols-2 gap-12 items-center mt-12">
-            <div className="space-y-6">
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 flex flex-col">
-                Enjoy Your Ride With Our Best Service
-              </h1>
-              <p className="text-lg text-gray-600">
-                Discover a seamless car rental experience that puts you in the
-                driver's seat. Choose from our wide range of cars, from compact
-                city cars to luxury models.
-              </p>
-              <Card className="mt-8">
-                <CardContent className="p-6 space-y-4">
-                  <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0">
-                    <div className="flex items-center w-full md:w-1/2">
-                      <MapPin className="text-red-500" />
-                      <div className="w-full">
-                        <NavigationMenu
-                          heading={
-                            location.trim()
-                              ? location.slice(0, 30)
-                              : "Choose Your Location"
-                          }
-                          UI={<LocationUI getLocation={handleLocation} />}
-                        />
-                      </div>
-                    </div>
+  <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32">
+    <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div className="space-y-6 ms-4">
+        <h1 className="text-4xl md:text-5xl font-bold text-gray-900">
+          Enjoy Your Ride With Our Best Service
+        </h1>
+        <p className="text-lg text-gray-600">
+          Discover a seamless car rental experience that puts you in the
+          driver's seat. Choose from our wide range of cars, from compact
+          city cars to luxury models.
+        </p>
+        <Card className="mt-8">
+          <CardContent className="p-6 space-y-4">
+            <div className="flex flex-col md:flex-row gap-4">
+              <div className="flex items-center w-full md:w-1/2">
+                <MapPin className="text-red-500 mr-2" />
+                <div className="w-full">
+                  <NavigationMenu
+                    heading={
+                      location.trim()
+                        ? location.slice(0, 30)
+                        : "Choose Your Location"
+                    }
+                    UI={<LocationUI getLocation={handleLocation} />}
+                  />
+                </div>
+              </div>
 
-                    <div className="flex items-center w-full md:w-1/2 space-x-3">
-                      <Calendar className="text-red-500" />
-                      <div className="w-full">
-                        <DatePickerWithRange onDateChange={handleDateChange} />
-                      </div>
-                    </div>
-                  </div>
+              <div className="flex items-center w-full md:w-1/2">
+                <Calendar className="text-red-500 mr-2" />
+                <div className="w-full">
+                  <DatePickerWithRange onDateChange={handleDateChange} />
+                </div>
+              </div>
+            </div>
 
-                  <button
-                    onClick={handleBookButton}
-                    className="w-full bg-red-500 text-white py-3 rounded-lg hover:bg-red-600 transition"
-                  >
-                    Book Your Ride
-                  </button>
-                </CardContent>
-              </Card>
-            </div>
-            <div className="flex items-center justify-center">
-              <ImageCarousel />
-            </div>
-          </div>
-        </div>
+            <button
+              onClick={handleBookButton}
+              className="w-full bg-red-500 text-white py-3 rounded-lg hover:bg-red-600 transition"
+            >
+              Book Your Ride
+            </button>
+          </CardContent>
+        </Card>
       </div>
+      <div className="flex items-center justify-center">
+        <ImageCarousel />
+      </div>
+    </div>
+  </div>
+</div>
 
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">

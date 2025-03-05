@@ -14,7 +14,7 @@ import { NavigationMenu as NavigationUIMenu,
 const NavigationMenu: React.FC<PropsTypes> = ({heading,UI}) => {
   return (
     <>
-      <NavigationUIMenu>
+      <NavigationUIMenu className="border rounded-lg">
         <NavigationMenuList>
           <NavigationMenuItem>
             <NavigationMenuTrigger>{heading}</NavigationMenuTrigger>
