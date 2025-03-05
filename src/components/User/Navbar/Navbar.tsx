@@ -70,7 +70,7 @@ const Navbar: React.FC<NavbarProps> = ({className}) => {
           const email = res.data.user.email;
           const profileUpdated = res.data.user.profileUpdated;
           const isHost = res.data.user.isHost;
-          const role = res.data.user.role;          
+          const role = res.data.user.role;                    
           dispatch(setCredentials({ userName, email, profileUpdated, isHost,role }));
         } else {
           dispatch(logOut()); 

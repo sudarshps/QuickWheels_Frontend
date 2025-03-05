@@ -227,26 +227,25 @@ const Login: React.FC = () => {
       })
         .then((res) => {
           if (res.data){    
-            console.log(res.data);              
             const email = res.data.email;
-            const name = res.data.given_name;
+            const name = res.data.username;
             axiosInstance.post("/checkMail", { email }).then((res) => {
               if (res.data) {
                 if (!res.data.emailExists) {
                   const loginMethod = "userlogin";
                   axiosInstance
-                    .post("userRegister", {
+                    .post("/userRegister", {
                       userName: name,
                       password,
                       email,
                       loginMethod,
                     })
                     .then((res) => {
-                      if (res.data) {
+                      if (res.data) { 
                         navigate("/");
                       }
                     });
-                } else {
+                } else {                  
                   password = res.data.password;
                   const loginMethod = "googleauth";
                   axiosInstance
